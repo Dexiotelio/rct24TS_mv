@@ -1,7 +1,7 @@
 export interface FetchData {
-  query?: string;
-  adult?: boolean;
-  year?: number;
-  page?: number;
-  type?: "movie" | "tv";
+  query: string;
+  adult: boolean;
+  year: number;
+  page: number;
+  type: "movie" | "tv";
 }

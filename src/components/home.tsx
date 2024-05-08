@@ -39,17 +39,23 @@ export default function Home(): JSX.Element {
       });
   }, []);
 
-  return (
-    <main>
-      {loading ? (
-        <p>Cargando...</p>
-      ) : (
-        <div className="sections">
-          <Section list={listData[0]?.results} name={"Popular"} />
-          <Section list={listData[1]?.results} name={"Top Rated"} />
-          <Section list={listData[2]?.results} name={"Upcoming"} />
-        </div>
-      )}
-    </main>
-  );
+  if (loading) {
+    return <p>Loading...</p>;
+  } else if (error) {
+    return <p>Oops, something has gone wrong. Please try again later.</p>;
+  } else {
+    return (
+      <main>
+        {loading ? (
+          <p>Cargando...</p>
+        ) : (
+          <div className="sections">
+            <Section list={listData[0]?.results} name={"Popular"} />
+            <Section list={listData[1]?.results} name={"Top Rated"} />
+            <Section list={listData[2]?.results} name={"Upcoming"} />
+          </div>
+        )}
+      </main>
+    );
+  }
 }
